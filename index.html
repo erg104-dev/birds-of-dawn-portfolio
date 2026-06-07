@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birds of Dawn - Creative Presentation</title>
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --bg-primary: #F7F5F0;
+            --bg-secondary: #FFFFFF;
+            --text-main: #2A312E;
+            --text-muted: #5B645F;
+            --accent-color: #2F4F4F;
+            --border-color: #D3D0C6;
+            --font-serif: 'Georgia', 'Playfair Display', serif;
+            --font-sans: 'Helvetica Neue', Arial, sans-serif;
+            --max-width: 800px;
+            --spacing-lg: 4rem;
+            --spacing-md: 2rem;
+            --spacing-sm: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-serif);
+            line-height: 1.8;
+            font-size: 1.125rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(247, 245, 240, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+            opacity: 0.7;
+        }
+
+        /* Layout & Typography */
+        main {
+            padding-top: 100px;
+        }
+
+        section {
+            max-width: var(--max-width);
+            margin: 0 auto var(--spacing-lg);
+            padding: var(--spacing-lg) 2rem;
+            background-color: var(--bg-secondary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border-radius: 4px;
+        }
+
+        #home {
+            background: transparent;
+            box-shadow: none;
+            text-align: center;
+            padding-top: 10vh;
+            padding-bottom: 10vh;
+        }
+
+        h1 {
+            font-family: var(--font-sans);
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-md);
+            color: var(--accent-color);
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-family: var(--font-sans);
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-md);
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-muted);
+        }
+
+        p strong {
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent-color);
+            margin: var(--spacing-md) 0;
+            padding: 1rem 1rem 1rem 2rem;
+            background: var(--bg-primary);
+            font-style: italic;
+            color: var(--text-main);
+        }
+
+        blockquote p {
+            margin-bottom: 0;
+            color: inherit;
+        }
+
+        /* Media Containers */
+        .media-container {
+            margin: var(--spacing-md) 0;
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #E8E6DF;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .media-container img, 
+        .media-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .social-media-grid {
+            display: flex;
+            gap: 2rem;
+            margin: var(--spacing-md) 0;
+        }
+
+        .social-media-grid .media-container {
+            flex: 1;
+            margin: 0;
+        }
+
+        .vertical-video {
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Miscellanous Text Blocks */
+        .design-promo-text, .misc-text {
+            text-align: center;
+            padding: var(--spacing-sm);
+            margin: var(--spacing-sm) 0;
+            background: var(--bg-primary);
+            font-family: var(--font-sans);
+            letter-spacing: 0.1em;
+            font-weight: 300;
+            color: var(--accent-color);
+        }
+
+        /* References Section */
+        .reference-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .reference-list li {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding-left: 1.5rem;
+            text-indent: -1.5rem;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            section {
+                padding: var(--spacing-md) 1.5rem;
+                margin-bottom: var(--spacing-md);
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .social-media-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#journal">Process Journal</a></li>
+                <li><a href="#analysis">Post-Project Analysis</a></li>
+                <li><a href="#plan">Development Plan</a></li>
+                <li><a href="#references">References</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="fade-in">
+            <h1>CREATIVE PRESENTATION: BIRDS OF DAWN</h1>
+            <p>Birds of Dawn is a creative presentation that shows how Nature tries to draw the attention of a self-centered vlogger to the beautiful birds of Australia.</p>
+            <p>This project integrates natural elements, such as the birds' sounds, and technological elements, such as interactive media (TouchDesigner), video, and Al voice, to enhance the experience of the audience.</p>
+        </section>
+
+        <section id="journal" class="fade-in">
+            <h2>PROCESS JOURNAL</h2>
+            <p>In order to document what we did regarding our final project, here is the journal of our activities.</p>
+            
+            <p><strong>6<sup>th</sup>-19<sup>th</sup> of April: mid-semester break.</strong> We started brainstorming about the technology we could use and developed this idea of interacting with a camera, a live performance.</p>
+            <p>For this purpose, I decided to use Touch Designer. I wanted something that would react in real time to what we were doing, so I came up with the idea of trigger sounds by moving in front of a camera.</p>
+            <p>I did my research on the internet and found a tutorial on how to create an interactive piano through Touch Designer (Akten, 2025).</p>
+            <p>I followed this tutorial as a foundation, and then I tried to adapt it according to our project's requirements in the next stages.</p>
+            
+            <p><strong>20<sup>th</sup> of April:</strong> During the class, I presented to my classmates my idea of using TouchDesigner and the progress I have already made, and Regina came up with the idea of representing some of the most popular birds of Australia.</p>
+            <p>In addition, we were informed during the class about the different possibilities that exist in order to manage the light in the room by David, the technician of the Faculty.</p>
+            <p>First, we wanted to record the birds' sounds in order to get original material, but we found it really difficult due to our schedule, and because we didn't know too many things about them, for example, where to find them, or at what time to look for them.</p>
+            
+            <p><strong>1<sup>st</sup> of May:</strong> I had completely finished the visual part of the TouchDesigner software.</p>
+            <p>Basically, it is about a camera pointing at a wall, with a subject in front of it.</p>
+            <p>On the computer's screen, you can see the same thing as the camera, except that there is a grid simulating piano tiles, which gets illuminated when the software detects a movement.</p>
+
+            <figure class="media-container fade-in">
+                <video src="videos/video1.mp4" controls playsinline muted loop alt="Man waving hand with grid interface"></video>
+            </figure>
+
+            <p>I just needed to figure out how to trigger each sound of the bird with the movement of the subject.</p>
+            
+            <p><strong>4<sup>th</sup> of May:</strong> Aaadrika proposed to us to have a narrator voice that conducts the whole performance, and turned it into a funny performance.</p>
+            <p>I really liked this idea because we started giving the technology a direction.</p>
+            
+            <p><strong>7th of May:</strong> Regina made the script during this day, based on what we discussed in the last class.</p>
+            
+            <p><strong>11<sup>th</sup> of May.</strong> At this point, I had accomplished my task of triggering the sound of birds with the movement of the subject, but as I presented the sound in class, Harshita suggest me to change some sounds of the birds, as they sounded a little bit odd.</p>
+            <p>I understood that point because I realized the limitations of the software in terms of the sound, originally I had in mind to adapt the bird sound to a specific note, this according to the piano tile where you would be located, and as you move you could play a different note with the same bird, but because of my limited time and knowledge, I decided trigger only the original sound of the bird no matter on what part of the frame you were located.</p>
+            <p>Given this decision, we also needed to discuss which birds' sounds sound better than the others.</p>
+            
+            <p><strong>12th of May:</strong> Harshita sent the new bird audio, replacing the kookaburra with eastern rosella.</p>
+            <p>We ended up choosing these three birds: Eastern Rosella, Magpie, Galah, and Fairywren.</p>
+            
+            <p><strong>15<sup>th</sup> of May:</strong> Harshita sent the final version of the script, editing some parts of the original to match the descriptions of the chosen birds.</p>
+            
+            <p><strong>16<sup>th</sup> of May:</strong> In addition, Harshita elaborated the narration with an Al voice based on the script.</p>
+            <p>We all decided to give the Al voice a deep voice, something like a voice suitable for a documentary.</p>
+            
+            <p><strong>18<sup>th</sup> of May:</strong> Regina made the video of a forest and integrated the Al audio narration.</p>
+            <p>During this class, we realized that I wouldn't be able to participate as a bird in the performance, as David couldn't control my computer, as he was busy making the light changes in the room.</p>
+            
+            <p><strong>21<sup>st</sup> of May:</strong> Harshita made corrections to the script because we realized it was too long, and I was no longer able to participate in the performance as a bird</p>
+            
+            <p><strong>22nd of May:</strong> we booked the dance studio and had a rehearsal by ourselves.</p>
+            <p>Regina and Aaadrika proposed the idea of including me as a vlogger, only interested in my followers.</p>
+            <p>This was a new way of integrating me into the performance, and we found it very useful, because this way I could participate but without having to stay all the time in the scenario, allowing me to control the software in the moments that we needed.</p>
+            <p>Today, we set the exact times of our entrance, our lines, and our movements.</p>
+            
+            <p><strong>25<sup>th</sup> of May:</strong> we got the final rehearsal with David, we could practice the choreography with all the lights and the narration of the Al voice.</p>
+            <p>But one thing happened, this time, I was not able to project with my laptop on the big screens.</p>
+            <p>On other days, it has worked all the time, but this day was different.</p>
+            <p>As this was our last rehearsal, I didn't have enough time to diagnose this issue, and I only decided to arrive half an hour earlier on the day of the final presentation to fix any projection issues I could have at that moment.</p>
+            
+            <p><strong>29<sup>th</sup> of May:</strong> we had our final rehearsal by ourselves by booking the dance studio again.</p>
+            <p>This time, we were more confident and felt everything was great. Nothing more we needed to adjust or do.</p>
+            <p>We just had to wait until the first of June, the final presentation day.</p>
+            
+            <p><strong>1<sup>st</sup> of June:</strong> This day was the final presentation. I had a big issue trying to connect my laptop, where the TouchDesigner software was, to the big screen in the room.</p>
+            <p>The same thing happened as last time, and even though I arrived half an hour earlier now, I couldn't fix the problem.</p>
+
+            <figure class="media-container fade-in">
+                <video src="videos/video2.mp4" controls playsinline muted loop alt="Man with selfie stick in front of projection"></video>
+            </figure>
+
+            <p>Our last option was to move all the files to a different computer, which pretty much solved the problem, but the uncertainty remained until the last moment.</p>
+            <p>Overall, we did a great performance, and we overcame any challenge.</p>
+            <p>The convenor, Janet, really liked it, as did our classmates.</p>
+            <p>This is the video of our final presentation:</p>
+        </section>
+
+        <section id="analysis" class="fade-in">
+            <h2>POST-PROJECT ANALYSIS</h2>
+            <p>This unit has opened a space for us to reflect on the complexities of the technologies involved in the creative industries field.</p>
+            <p>First, we encounter many new ways in which the technology has been entered into the arts, such as holographic performances, Al actors, or robot performances, and then, we encounter countless perspectives about whether we should allow the use of technology in any kind of art completely.</p>
+            <p>In the end, we understood that this was an ongoing debate, where conclusions have not been made yet, but that we could contribute to the discussion.</p>
+            <p>The debates made, the readings showed, and the content explained by the convenor helped us to forge our perspective on the technology in the creative industries.</p>
+            <p>In my case, I think that the use of technology can be used or not be used in the art, that it shouldn't be banned, but if one doesn't want to use it, it is fine as well.</p>
+            
+            <p>Just as the Australia Council of Arts (2021) has said regarding the use of digital and analog technologies:</p>
+            
+            <blockquote class="fade-in">
+                <p>Digital and analog technologies continue to exist alongside each other, and most people use a mixture of both in their everyday lives (...). In most cases, the digital and the analog end up being intertwined and overlapping in multiple ways (p. 51).</p>
+            </blockquote>
+
+            <p>This also aligned with my way of thinking, because I consider that technology can give you a boost and enhance your art, but at the same time, you can't let it go as it is;</p>
+            <p>it needs the creativity and direction from you. When we watched the past performances from this unit during class, it was clear to me that I wanted to go beyond a simple performance;</p>
+            <p>I wanted to interact with the technology in an artistic way.</p>
+            <p>At that point is where I imagined a live interactive projection, to provide a performance with something innovative.</p>
+            <p>In other words, I wanted to create a live performance where we could move on the stage, and at the same time, interact with a technology.</p>
+            <p>After extensive research, I found the technology I wanted: to show a subject on camera, to make an effect of his movement and then trigger a sound with that movement.</p>
+            
+            <p>As an inspiration of this, there was the Very Nervous System, from David Rokeby in 1986, he says:</p>
+            
+            <blockquote class="fade-in">
+                <p>In these systems, I use video cameras, image processors, computers, synthesizers, and a sound system to create a space in which the movements of one's body create sound and/or music. It has been primarily presented as an installation in galleries, but has also been installed in public outdoor spaces and has been used in a number of performances (n.d., para 1).</p>
+            </blockquote>
+
+            <p>When I finally made my idea, I realised it was not enough, but not because there wasn't enough technology, but because a purpose and a meaning were missing.</p>
+            <p>In this part, my teammates helped me and developed the history of this performance, the one with the vlogger, the narrator, and the Australian birds.</p>
+            <p>The lesson for me is that once you have the technical aspects ready, you also need to provide them with significance.</p>
+            <p>Once again, human and technology are intertwined.</p>
+            <p>One last aspect I would like to add to this reflection.</p>
+            <p>I had some trouble trying to connect my computer to the projector prior to our presentation, and in the end, we had to transfer all the files from my computer to another one that could connect.</p>
+            <p>We could project and perform our project, but I consider that I could have avoided this problem if I had generated a plan B. My idea was to arrive half an hour earlier for our presentation to fix any problem I could have;</p>
+            <p>nevertheless, that was not enough. One better idea could have been to have a backup computer beforehand that could</p>
+
+            <figure class="media-container fade-in">
+                <img src="images/image01.jpg" alt="Birds of Dawn project poster">
+            </figure>
+
+            <p>project in case mine fails. I never thought about it, but in the end, this helped me to learn how, in the arts, many times there's only one presentation to perform, and it needs to be prepared and anticipated as much as possible.</p>
+        </section>
+
+        <section id="plan" class="fade-in">
+            <h2>DEVELOPMENT PLAN</h2>
+            <p>For this project, I would like it to continue, and I see its future in very different ways.</p>
+            <p>The main idea I have is to create a series of performances about Australia, it can be about nature (birds, endemic animals, endemic plants), about society (Aussie slang, Australian Cities' sounds), or about anything that could involve the everyday life of this country.</p>
+            <p>We already have the interactive technology that provides the project with an immersive feature, and we need to add different meanings according to each performance.</p>
+            <p>In terms of funding, I would like to associate with national and state museums, inviting them to collaborate.</p>
+            <p>We could represent a good opportunity to show Australia's life in an innovative and attractive way.</p>
+            <p>For example, it is regular for some museums to have open calls to local artists, such as the Murray Art Museum Albury in NSW or the Shepparton Art Museum in Victoria.</p>
+            
+            <p>One design we can use for promoting our work to the museums is the following:</p>
+
+            <div class="design-promo-text fade-in">
+                <p>Birds Dawn</p>
+                <p>VERASTINE</p>
+                <p>Π</p>
+                <p>JUNE</p>
+            </div>
+
+            <div class="social-media-grid fade-in">
+                <figure class="media-container">
+                    <img src="images/image02.jpg" alt="TikTok social media mock up">
+                </figure>
+                <figure class="media-container">
+                    <img src="images/image03.jpg" alt="Instagram social media mock up">
+                </figure>
+            </div>
+
+            <p>Besides museums, government organisations like Creative Australia often offer different grants and opportunities to organisations and individuals, which can be another way to get our project known.</p>
+            <p>In terms of marketing or promotion of our project, just as it is now, I believe the next steps could be to create a social media account through diverse platforms and create short-form videos as well as images of our last presentation.</p>
+            <p>In addition, we will be inviting people to collaborate with us in the elaboration of more ideas to combine with the digital technology.</p>
+            <p>All of this is with the purpose of raising awareness and becoming popular among artists and people.</p>
+            <p>I believe the very first step of a project like this is to be surrounded by people with similar interests and connect with them.</p>
+
+            <div class="misc-text fade-in">
+                <p>Q</p>
+                <p>BIRDS</p>
+                <p>口</p>
+            </div>
+
+            <p>Regarding short-form videos, here are examples of what we can do on a daily basis:</p>
+
+            <figure class="media-container vertical-video fade-in">
+                <video src="videos/video3.mp4" controls playsinline muted loop alt="Vertical social media video collage"></video>
+            </figure>
+
+            <figure class="media-container fade-in">
+                <video src="videos/video4.mp4" controls playsinline muted loop alt="Testing Day stage projection"></video>
+            </figure>
+
+            <div class="misc-text fade-in">
+                <p>BIRD'S BIRDS</p>
+                <p>Today</p>
+                <p>Birds of Dawn</p>
+                <p>Testing Day</p>
+            </div>
+
+            <p>It is not necessary for the content on social media to be professional, but personal and meaningful in terms of your audience.</p>
+            <p>I believe that if we keep pushing our project into these channels, we will succeed and have some opportunities available.</p>
+            <p>We need to aim at posting twice or three times per week to maintain consistency.</p>
+        </section>
+
+        <section id="references" class="fade-in">
+            <h2>REFERENCES</h2>
+            <ul class="reference-list">
+                <li>Al acknowledgment: ChatGPT and Gemini were used in order to code this webpage</li>
+                <li>Australia Council for the Arts. (2021). In Real Life: Mapping digital cultural engagement in the first decades of the 21st century. Australia Council for the Arts. https://creative.gov.au/sites/creative-australia/files/documents/2025-04/In-Real-Life-Digital-Engagement-Research-Report-1.pdf</li>
+                <li>Memo Akten. (2025, August 29). Webcam Piano | Part 1: Touchdesigner, motion detection, frame differencing. YouTube.</li>
+                <li>Rokeby, D. (n.d.). Interactive Installations: Very Nervous System (1986-1990). Rokeby. Retrieved June 7, 2026, from http://www.davidrokeby.com/vns.html</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
